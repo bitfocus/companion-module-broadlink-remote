@@ -1,3 +1,3 @@
-# companion-module-wled-ws
+# companion-module-[replace with module name]
 
-See HELP.md and LICENSE
+See [HELP.md](./companion/HELP.md) and [LICENSE](./LICENSE)
