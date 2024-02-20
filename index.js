@@ -63,6 +63,9 @@ class Rm4ProInstance extends InstanceBase {
 
 		if (rfPacketFound) {
 			console.log("RF Learn: Success! The code was recorded and can now be sent out.")
+			this.setVariableValues({
+				lastRFCode: rfPacketFound.toString("hex")
+			});
 			return rfPacketFound;
 		} else {
 			console.log("RF Learn: Timeout - no command received.");
