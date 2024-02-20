@@ -1,20 +1,23 @@
 {
-	"name": "your-module-name",
+	"name": "broadlink-remote",
 	"version": "0.1.0",
-	"main": "main.js",
+	"main": "index.js",
+	"type": "module",
 	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
 		"format": "prettier -w ."
 	},
 	"license": "MIT",
+	"dependencies": {
+		"@companion-module/base": "~1.7.0",
+		"node-broadlink": "^2.4.0"
+	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bitfocus/companion-module-your-module-name.git"
-	},
-	"dependencies": {
-		"@companion-module/base": "~1.5.1"
+		"url": "git+https://github.com/bitfocus/companion-module-broadlink-remote.git"
 	},
 	"devDependencies": {
-		"@companion-module/tools": "^1.4.1"
+		"@companion-module/tools": "^1.5.0"
 	},
 	"prettier": "@companion-module/tools/.prettierrc.json"
 }
