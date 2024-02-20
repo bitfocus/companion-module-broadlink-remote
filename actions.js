@@ -1,20 +1,46 @@
-module.exports = function (self) {
-	self.setActionDefinitions({
-		sample_action: {
-			name: 'My First Action',
-			options: [
-				{
-					id: 'num',
-					type: 'number',
-					label: 'Test',
-					default: 5,
-					min: 0,
-					max: 100,
-				},
-			],
-			callback: async (event) => {
-				console.log('Hello world!', event.options.num)
-			},
-		},
-	})
+export function setupActions(instance) {
+    instance.setActionDefinitions({
+        sendRF: {
+            name: "Learn & Send RF code",
+            description: "Send out RF commands and record them using the learn function.",
+            learnTimeout: 30000,
+            options: [
+                {
+                    type: 'textinput',
+                    label: 'Code (Hex)',
+                    id: 'code',
+                }
+            ],
+            callback: async (action, context) => {
+                instance.sendCode(action.options.code);
+            },
+            learn: async (action) => {
+                var newCode = await instance.learnRFCode();
+                return {
+                    code: newCode
+                }
+            }
+        },
+        sendIR: {
+            name: "Learn & Send IR code",
+            description: "Send out IR commands and record them using the learn function.",
+            learnTimeout: 10000,
+            options: [
+                {
+                    type: 'textinput',
+                    label: 'Code (Hex)',
+                    id: 'code',
+                }
+            ],
+            callback: async (action, context) => {
+                instance.sendCode(action.options.code);
+            },
+            learn: async (action) => {
+                var newCode = await instance.learnIRCode();
+                return {
+                    code: newCode
+                }
+            }
+        },
+    })
 }
